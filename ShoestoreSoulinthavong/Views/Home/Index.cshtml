@@ -1,0 +1,38 @@
+﻿@model List<Shoe>
+@{
+    ViewBag.Title = "Shoes";
+}
+
+<h2>Shoes</h2>
+
+<a asp-controller="Shoe" asp-action="Add">Add New Shoes</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Style</th>
+            <th>Color</th>
+            <th>Gender</th>
+            <th>Size</th>
+            <th>Retail Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shoe in Model)
+            {
+        <tr>
+            <td>@shoe.Brand</td>
+            <td>@shoe.Style</td>
+            <td>@shoe.Color</td>
+            <td>@shoe.Gender</td>
+            <td>@shoe.Size</td>
+            <td>$   @shoe.RetailPrice</td>
+            <td>
+                <a asp-controller="Shoe" asp-action="Edit" asp-route-id="@shoe.ShoeId">Edit</a>
+                <a asp-controller="Shoe" asp-action="Delete" asp-route-id="@shoe.ShoeId">Delete</a>
+
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>
